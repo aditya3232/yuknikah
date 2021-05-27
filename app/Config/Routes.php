@@ -32,7 +32,11 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Home::index');
+// $routes->get('/', 'Home::index');
+/* addRedirect digunakan untuk mengalihkan route yang lama yaitu '/' (localhost:8080), menjadi /home */
+/* sehingga ketika mengakses dashboard akan mengarah ke /home */
+$routes->addRedirect('/', 'home');
+$routes->get('gawe', 'Gawe::index');
 
 /*
  * --------------------------------------------------------------------
