@@ -3,6 +3,12 @@
 
 <?= $this->extend('layout/default') ?>
 
+<!-- titile view home.php -->
+<?= $this->section('content') ?>
+<title>Home &mdash; yukNikah</title>
+<?= $this->endSection()?>
+
+<!-- konten view home.php -->
 <?= $this->section('content') ?>
 <section class="section">
   <div class="section-header">

@@ -37,6 +37,14 @@ $routes->setAutoRoute(true);
 /* sehingga ketika mengakses dashboard akan mengarah ke /home */
 $routes->addRedirect('/', 'home');
 $routes->get('gawe', 'Gawe::index');
+// fungsi membuat database dengan link create-db
+$routes->get('create-db', function(){
+	$forge = \Config\Database::forge();
+	if ($forge->createDatabase('yuknikah'))
+	{
+		echo 'Database created!';
+	}
+});
 
 /*
  * --------------------------------------------------------------------
