@@ -36,7 +36,7 @@ $routes->setAutoRoute(true);
 /* addRedirect digunakan untuk mengalihkan route yang lama yaitu '/' (localhost:8080), menjadi /home */
 /* sehingga ketika mengakses dashboard akan mengarah ke /home */
 $routes->addRedirect('/', 'home');
-$routes->get('gawe', 'Gawe::index');
+$routes->get('gawe', 'Gawe::index'); 
 // fungsi membuat database dengan link create-db
 $routes->get('create-db', function(){
 	$forge = \Config\Database::forge();

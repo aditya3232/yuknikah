@@ -9,7 +9,7 @@ class Gawe extends Migration
 	public function up()
 	{
 		//membuat sebuah tabel 
-		$this->forge->addField([
+                $this->forge->addField([
                         'id_gawe'          => [
                                 'type'           => 'BIGINT',
                                 'constraint'     => 20,
@@ -35,6 +35,6 @@ class Gawe extends Migration
 	public function down()
 	{
 		//menghapus tabel
-		$this->forge->dropTable('gawe');
+                $this->forge->dropTable('gawe');
 	}
 }
