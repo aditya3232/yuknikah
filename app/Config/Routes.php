@@ -36,8 +36,9 @@ $routes->setAutoRoute(true);
 /* addRedirect digunakan untuk mengalihkan route yang lama yaitu '/' (localhost:8080), menjadi /home */
 /* sehingga ketika mengakses dashboard akan mengarah ke /home */
 $routes->addRedirect('/', 'home');
+// routes get 'gawe' yg diarahkan ke controller Gawe function index
 $routes->get('gawe', 'Gawe::index'); 
-// fungsi membuat database dengan link create-db
+// routes get yg berisi fungsi membuat database dengan link create-db
 $routes->get('create-db', function(){
 	$forge = \Config\Database::forge();
 	if ($forge->createDatabase('yuknikah'))
@@ -45,6 +46,12 @@ $routes->get('create-db', function(){
 		echo 'Database created!';
 	}
 });
+// routes get 'gawe/add' yg diarahkan ke controller Gawe function create
+$routes->get('gawe/add', 'Gawe::create');
+// routes post 'gawe' yg diarahkan ke controller Gawe function store
+$routes->post('gawe', 'Gawe::store');
+
+
 
 /*
  * --------------------------------------------------------------------
