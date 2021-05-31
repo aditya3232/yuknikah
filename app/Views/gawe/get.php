@@ -73,9 +73,17 @@
                             <td><?=date('d/m/Y', strtotime($value->date_gawe))?></td>
                             <td><?= $value->info_gawe; ?></td>
                             <td class="text-center" style="width:15%">
+                                <!-- icon edit -->
                                 <a href="<?=site_url('gawe/edit/'.$value->id_gawe)?>" class="btn btn-warning btn-sm">
-                                    <i class="fas fa-pencil-alt"></i></a>
-                                <a href="" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
+                                    <i class="fas fa-pencil-alt"></i>
+                                </a>
+                                <!-- tombol delete -->
+                                <form action="<?=site_url('gawe/'.$value->id_gawe)?>" method="post" class="d-inline"
+                                    onsubmit="return confirm('yakin hapus data?')">
+                                    <?= csrf_field() ?>
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+                                </form>
                             </td>
                         </tr>
                         <!-- akhir php -->

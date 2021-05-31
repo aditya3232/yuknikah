@@ -86,4 +86,9 @@ class Gawe extends BaseController
         return redirect()->to(site_url('gawe'))->with('success', 'Data berhasil diupdate'); // kemduian return flashData
 
     }
+
+    public function destroy($id){
+        $this->db->table('gawe')->where(['id_gawe' => $id])->delete(); 
+        return redirect()->to(site_url('gawe'))->with('success', 'Data berhasil dihapus');
+    }
 }
