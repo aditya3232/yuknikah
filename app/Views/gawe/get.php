@@ -73,7 +73,8 @@
                             <td><?=date('d/m/Y', strtotime($value->date_gawe))?></td>
                             <td><?= $value->info_gawe; ?></td>
                             <td class="text-center" style="width:15%">
-                                <a href="" class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i></a>
+                                <a href="<?=site_url('gawe/edit/'.$value->id_gawe)?>" class="btn btn-warning btn-sm">
+                                    <i class="fas fa-pencil-alt"></i></a>
                                 <a href="" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
                             </td>
                         </tr>

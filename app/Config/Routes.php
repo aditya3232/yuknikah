@@ -50,6 +50,14 @@ $routes->get('create-db', function(){
 $routes->get('gawe/add', 'Gawe::create');
 // routes post 'gawe' yg diarahkan ke controller Gawe function store
 $routes->post('gawe', 'Gawe::store');
+// routes get 'gawe/edit/(:any) yg diarahkan ke controller Gawe function edit 
+// :any akan menampung id_gawe
+// routes yg muncul ketika klik icon edit
+$routes->get('gawe/edit/(:any)', 'Gawe::edit/$1');
+// routes yg muncul setelah klik tombol save di halaman update
+$routes->put('gawe/(:any)', 'Gawe::update/$1');
+
+
 
 
 

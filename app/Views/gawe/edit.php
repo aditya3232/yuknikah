@@ -2,7 +2,7 @@
 
 <!-- titile view home.php -->
 <?= $this->section('content') ?>
-<title>Create Gawe &mdash; yukNikah</title>
+<title>Update Gawe &mdash; yukNikah</title>
 <?= $this->endSection()?>
 
 <!-- konten view get.php -->
@@ -14,7 +14,7 @@
         <div class="section-header-back">
             <a href="<?=site_url('gawe')?>" class="btn"><i class="fas fa-arrow-left"></i></a>
         </div>
-        <h1>Create Gawe</h1>
+        <h1>Update Gawe</h1>
     </div>
 
     <div class="section-body">
@@ -22,31 +22,34 @@
         <div class="card">
             <!-- card header -->
             <div class="card-header">
-                <h4>Buat Gawe / Acara</h4>
+                <h4>Edit Gawe / Acara</h4>
             </div>
             <!-- card body yg didalamnya ada form input-->
             <div class="card-body col-md-6">
-                <!-- action-nya diarahkan ke url 'gawe' yang berisi method post (method post agar data yg di post dapat diambil getPost()) -->
-                <!-- kemudian atur routes url 'gawe' ke controller Gawe function store -->
-                <form action="<?=site_url('gawe')?>" method="post" autocomplete="off">
+                <!-- action-nya diarahkan ke url 'gawe/id-nya(id_gawe yg sesuai dgn link-nya)' -->
+                <form action="<?=site_url('gawe/'.$gawe->id_gawe)?>" method="post" autocomplete="off">
                     <!-- tambahkan csrf_field agar form ini bisa diisi -->
                     <?= csrf_field() ?>
+                    <!-- http method spoofing untuk update data, kemudian buat routes untuk proses update datanya agar tersimpan -->
+                    <!-- setiap inputan harus diberikan name -->
+                    <input type="hidden" name="_method" value="PUT">
                     <div class="from-group">
                         <label>Nama Gawe / Acara *</label>
                         <!-- name input sebaiknya disamakan dengan nama field tabel didatabase -->
-                        <input type="text" name="name_gawe" class="form-control" required autofocus>
+                        <!-- input text akan memiliki value yg sudah terisi didalam inputannya sesuai dengan $id: name_gawe -->
+                        <input type="text" name="name_gawe" value="<?=$gawe->name_gawe?>" class="form-control" required>
                     </div>
                     <div class="from-group">
                         <br>
                         <label>Tanggal Acara *</label>
-                        <!-- name input sebaiknya disamakan dengan nama field tabel didatabase -->
-                        <input type="date" name="date_gawe" class="form-control" required>
+                        <!-- input text akan memiliki value yg sudah terisi didalam inputannya sesuai dengan $id: date_gawe -->
+                        <input type="date" name="date_gawe" value="<?=$gawe->date_gawe?>" class="form-control" required>
                     </div>
                     <div class="from-group">
                         <br>
                         <label>Info</label>
-                        <!-- name input sebaiknya disamakan dengan nama field tabel didatabase -->
-                        <textarea name="info_gawe" class="form-control"></textarea>
+                        <!-- text area akan memiliki isi sesuai dengan $id: info_gawe -->
+                        <textarea name="info_gawe" class="form-control"><?=$gawe->info_gawe?></textarea>
                     </div>
                     <div>
                         <br>

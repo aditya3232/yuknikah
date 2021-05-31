@@ -13,7 +13,7 @@ class Gawe extends BaseController
         $builder        = $this->db->table('gawe');
         // selecting data
         $query          = $builder->get();      // Produces: SELECT * FROM mytable
-        $data['gawe']   = $query->getResult();  //simpan query kedalam variabel 'gawe'
+        $data['gawe']   = $query->getResult();  //simpan query kedalam variabel 'gawe'. getResult() akan mereturn semua baris
 
         // menampilkan view
         return view('gawe/get', $data); 
@@ -46,6 +46,44 @@ class Gawe extends BaseController
         if ($this->db->affectedRows() > 0){
             return redirect()->to(site_url('gawe'))->with('success', 'Data berhasil disimpan');
         }
+
+    }
+
+    public function edit($id = null){
+        // parameter $id menampung id_gawe dari routes 'Gawe::edit/$1'
+        if($id != null){
+            // kondisi jika $id tidak sama dengan null, 
+            // maka cek apakah $id dari link sama dengan field id_gawe,
+            // jika $id = id_gawe (($query->resultID->num_rows > 0)) num_rows >0 berarti datanya ada,
+            // maka lanjut ke halaman edit, 
+            // jika tidak pagenotfound,
+            $query = $this->db->table('gawe')->getWhere(['id_gawe' => $id]);
+            if($query->resultID->num_rows > 0){
+                $data['gawe'] = $query->getRow(); //simpan query kedalam variabel 'gawe'. getRow() akan mereturn 1 baris
+                return view('gawe/edit', $data);
+            } else{
+                throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+            }
+        } else{
+            // kondisi jika $id tidak sama dengan null,
+            // maka pagenotfound
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+        }
+    }
+
+    public function update($id){
+        $data = $this->request->getPost(); // mengambil data dari form
+        unset($data['_method']);//nama method PUT berbeda, jadi http method spoofing ny g terdeteksi,solusinya unset bagian _method
+
+        // kalau pakai nama spesifik tidak perlu unset($data['_method']);
+        // $data = [
+        //     'name_gawe' => $this->request->getVar('nama_spesifiknya')
+        //     'date_gawe' => $this->request->getVar('nama_spesifiknya')
+        //     'info_gawe' => $this->request->getVar('nama_spesifiknya')
+        // ]
+
+        $this->db->table('gawe')->where(['id_gawe' => $id])->update($data); //update data dari form, dan masukkan ke id_gawe yg sesuai
+        return redirect()->to(site_url('gawe'))->with('success', 'Data berhasil diupdate'); // kemduian return flashData
 
     }
 }
