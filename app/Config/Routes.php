@@ -32,6 +32,11 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
+
+// routes untuk halaman login
+$routes->get('login', 'Auth::login');
+// addRedirect localhost/auth agar mengarah ke localhost/login
+$routes->addRedirect('auth', 'login');
 // $routes->get('/', 'Home::index');
 /* addRedirect digunakan untuk mengalihkan route yang lama yaitu '/' (localhost:8080), menjadi /home */
 /* sehingga ketika mengakses dashboard akan mengarah ke /home */
@@ -58,6 +63,7 @@ $routes->get('gawe/edit/(:num)', 'Gawe::edit/$1');
 $routes->put('gawe/(:any)', 'Gawe::update/$1');
 // routes yg muncul setelah klik tombol delete di halaman gawe (tabel)
 $routes->delete('gawe/(:segment)', 'Gawe::destroy/$1');
+
 
 
 
