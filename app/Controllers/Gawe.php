@@ -25,10 +25,10 @@ class Gawe extends BaseController
 
     public function store(){
         // cara 1: name input sama
-        // getPost akan mengambil method post yg berisi array asosoatif ["nama field" => "isinya"]
+        // getPost akan mengambil method post yg berisi $data array asosoatif ["nama field" => "isinya"]
         // maka dari itu name inputan di add.php lebih baik disamakan dgn nama field tabel dalam database 
         // sehingga tidak perlu inisialisasi
-        $data = $this->request->getPost();
+        $data = $this->request->getPost(); //ini fungsinya untuk menampung inputan
 
         // cara 2:name input spesifik (inisilaisasi name inputnya)
         // $data = [
@@ -57,7 +57,7 @@ class Gawe extends BaseController
             // jika $id = id_gawe (($query->resultID->num_rows > 0)) num_rows >0 berarti datanya ada,
             // maka lanjut ke halaman edit, 
             // jika tidak pagenotfound,
-            $query = $this->db->table('gawe')->getWhere(['id_gawe' => $id]);
+            $query = $this->db->table('gawe')->getWhere(['id_gawe' => $id]); // ini adalah query yg memuat tabel gawe dan mencari field 'id_gawe' => $id
             if($query->resultID->num_rows > 0){
                 $data['gawe'] = $query->getRow(); //simpan query kedalam variabel 'gawe'. getRow() akan mereturn 1 baris
                 return view('gawe/edit', $data);

@@ -16,7 +16,7 @@
         </div>
     </div>
 
-    <!-- kondisi yg akan menampilkan sessions flash message, ketika ada session flash message success -->
+    <!-- kondisi yg akan menampilkan sessions flashData success-->
     <!-- session flashdata bersifat sekali, ketika sudah tampil akan dihapus -->
     <?php if(session()->getFlashdata('success')) : ?>
     <div class="alert alert-success alert-dismissible show fade">
@@ -30,7 +30,7 @@
     </div>
     <?php endif; ?>
 
-    <!-- kondisi ketika mendapatkan session flash message error -->
+    <!-- kondisi ketika mendapatkan session flashData error -->
     <!-- konidisi ini muncul karena dalam web ini sudah diaktifkan csrf, sehingga inputan hanya boleh diinput melalui halaman webnya, -->
     <!-- sehingga kita tidak bisa menginputkan data dari postman/terminal/console -->
     <?php if(session()->getFlashdata('error')) : ?>
