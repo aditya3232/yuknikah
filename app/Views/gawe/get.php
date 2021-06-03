@@ -78,8 +78,7 @@
                                     <i class="fas fa-pencil-alt"></i>
                                 </a>
                                 <!-- tombol delete -->
-                                <form action="<?=site_url('gawe/'.$value->id_gawe)?>" method="post" class="d-inline"
-                                    onsubmit="return confirm('yakin hapus data?')">
+                                <form action="<?=site_url('gawe/'.$value->id_gawe)?>" method="post" class="d-inline" onsubmit="return confirm('yakin hapus data?')">
                                     <?= csrf_field() ?>
                                     <input type="hidden" name="_method" value="DELETE">
                                     <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>

@@ -10,7 +10,10 @@ class Auth extends BaseController
 //     return redirect()->to(site_url('login'));
 //   }
   public function login(){
-
+    // kondisi jika ada session id_user maka akan di direct ke halaman home, tidak bisa buka halaman login
+    if(session('id_user')){
+      return redirect()->to(site_url('home'));
+    }
     return view('auth/login');
   }
 
@@ -40,5 +43,12 @@ class Auth extends BaseController
         return redirect()->back()->with('error', 'Email tidak ditemukan!');
     }
 
+  }
+
+  public function logout(){
+    // fungsi untuk menghilangkan session id_user
+    session()->remove('id_user');
+    // kemudian arahkan ke halaman login
+    return redirect()->to(site_url('login'));
   }
 }
