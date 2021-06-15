@@ -64,6 +64,9 @@ $routes->put('gawe/(:any)', 'Gawe::update/$1');
 // routes yg muncul setelah klik tombol delete di halaman gawe (tabel)
 $routes->delete('gawe/(:segment)', 'Gawe::destroy/$1');
 
+// routes presenter controller Group
+$routes->presenter('groups');
+
 
 
 

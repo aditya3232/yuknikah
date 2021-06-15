@@ -5,10 +5,11 @@ namespace App\Controllers;
 class Auth extends BaseController
 {
 //ini cara meridirect controller auth ke login dari controller
-//   public function index()
-//   {
-//     return redirect()->to(site_url('login'));
-//   }
+  // public function index()
+  // {
+  //   return redirect()->to(site_url('login'));
+  // }
+
   public function login(){
     // kondisi jika ada session id_user maka akan di direct ke halaman home, tidak bisa buka halaman login
     if(session('id_user')){
